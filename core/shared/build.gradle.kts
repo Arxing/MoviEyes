@@ -9,5 +9,6 @@ android {
 }
 
 dependencies {
-  implementation(libs.androidx.fragment)
+  api(libs.androidx.fragment)
+  api(libs.androidx.fragmentKtx)
 }
