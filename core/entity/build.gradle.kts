@@ -10,5 +10,5 @@ android {
 }
 
 dependencies {
-  implementation(libs.gson)
+  api(libs.gson)
 }
