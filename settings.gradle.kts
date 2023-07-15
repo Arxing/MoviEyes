@@ -19,4 +19,5 @@ rootProject.name = "MoviEyes"
 include(
   ":app",
   ":core:shared",
+  ":core:network",
 )
