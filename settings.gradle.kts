@@ -20,4 +20,5 @@ include(
   ":app",
   ":core:shared",
   ":core:network",
+  ":core:entity",
 )
