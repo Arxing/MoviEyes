@@ -22,4 +22,5 @@ include(
   ":core:network",
   ":core:entity",
   ":core:movie-lists",
+  ":feature:account",
 )
