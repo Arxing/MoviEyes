@@ -21,6 +21,6 @@ include(
   ":core:shared",
   ":core:network",
   ":core:entity",
-  ":core:movie-lists",
+  ":feature:movie-lists",
   ":feature:account",
 )
