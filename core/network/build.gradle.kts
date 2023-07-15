@@ -1,5 +1,4 @@
 import java.util.Properties
-import kotlin.properties.ReadOnlyProperty
 
 plugins {
   id("me.android.library")
@@ -23,4 +22,6 @@ dependencies {
   api(libs.retrofit.core)
   api(libs.retrofit.converter.gson)
   api(libs.okhttp)
+  implementation(libs.coil.bom)
+  implementation(libs.coil.compose)
 }

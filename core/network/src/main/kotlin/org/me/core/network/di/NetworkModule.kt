@@ -1,9 +1,14 @@
 package org.me.core.network.di
 
+import android.content.Context
+import coil.ImageLoader
+import coil.disk.DiskCache
+import coil.request.CachePolicy.ENABLED
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import org.me.core.network.AuthInterceptor
@@ -54,6 +59,14 @@ internal abstract class NetworkModule {
         .client(okHttpClient)
         .baseUrl("https://api.themoviedb.org/")
         .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideImageLoader(@ApplicationContext context: Context): ImageLoader {
+      return ImageLoader.Builder(context)
+        .networkCachePolicy(ENABLED)
         .build()
     }
   }

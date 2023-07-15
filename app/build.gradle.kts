@@ -22,8 +22,11 @@ dependencies {
   implementation(libs.androidx.fragmentKtx)
   implementation(libs.androidx.appcompat)
   implementation(libs.androidx.constraintlayout)
+  implementation(libs.coil.bom)
+  implementation(libs.coil.compose)
 
   implementation(project(":feature:account"))
   implementation(project(":feature:movie-lists"))
   implementation(project(":core:shared"))
+  implementation(project(":core:network"))
 }
