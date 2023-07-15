@@ -5,6 +5,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityRetainedComponent
+import org.me.feature.movie_lists.mapping.MovieMapping
+import org.me.feature.movie_lists.mapping.MovieMappingImpl
 import org.me.feature.movie_lists.mapping.PopularMoviesMapping
 import org.me.feature.movie_lists.mapping.PopularMoviesMappingImpl
 import org.me.feature.movie_lists.model.MovieListsApi
@@ -20,7 +22,10 @@ internal abstract class MovieListsModule {
   abstract fun bindPopularMoviesRepository(impl: MovieListsRepositoryImpl): MovieListsRepository
 
   @Binds
-  abstract fun bindPopularMoviesMapping(impl: PopularMoviesMappingImpl) : PopularMoviesMapping
+  abstract fun bindPopularMoviesMapping(impl: PopularMoviesMappingImpl): PopularMoviesMapping
+
+  @Binds
+  abstract fun bindMovieMapping(impl: MovieMappingImpl): MovieMapping
 
   companion object {
 

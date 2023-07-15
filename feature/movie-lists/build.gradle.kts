@@ -10,7 +10,9 @@ android {
 }
 
 dependencies {
-  implementation(libs.retrofit.core)
+  implementation(libs.coil.bom)
+  implementation(libs.coil.compose)
+  implementation(libs.androidx.paging.compose)
   implementation(project(":core:network"))
   implementation(project(":core:entity"))
   implementation(project(":core:shared"))
