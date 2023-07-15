@@ -1,4 +1,4 @@
-package org.me.core
+package org.me.core.network
 
 import okhttp3.Interceptor
 import okhttp3.Interceptor.Chain

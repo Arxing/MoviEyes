@@ -20,6 +20,7 @@ android {
 }
 
 dependencies {
-  implementation(libs.retrofit.core)
-  implementation(libs.retrofit.converter.gson)
+  api(libs.retrofit.core)
+  api(libs.retrofit.converter.gson)
+  api(libs.okhttp)
 }
