@@ -5,11 +5,20 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.KeyboardArrowUp
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -24,8 +33,7 @@ import org.me.feature.movie_lists.viewmodel.PopularMoviesViewModel
 import org.me.feature.movie_lists.viewmodel.PopularMoviesViewModel.OnError
 
 @AndroidEntryPoint
-class PopularMoviesFragment : BaseComposeFragment() {
-
+class PopularMoviesFragment private constructor() : BaseComposeFragment() {
   private val viewModel: PopularMoviesViewModel by viewModels()
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,16 +44,27 @@ class PopularMoviesFragment : BaseComposeFragment() {
   @Composable
   override fun Content() {
     val movieCards = viewModel.getPopularMoviesFlow().collectAsLazyPagingItems()
+    val lazyListState = rememberLazyListState()
+    val scope = rememberCoroutineScope()
 
     Box(modifier = Modifier.fillMaxSize()) {
       LazyColumn(
         modifier = Modifier,
         verticalArrangement = Arrangement.spacedBy(15.dp),
         contentPadding = PaddingValues(horizontal = 10.dp, vertical = 8.dp),
+        state = lazyListState,
       ) {
         items(items = movieCards) {
           if (it != null) {
-            MovieCard(state = it)
+            MovieCard(
+              state = it,
+              onClick = {
+
+              },
+              onClickFavorite = {
+                it.isFavorite = !it.isFavorite
+              },
+            )
           }
         }
 
@@ -59,6 +78,24 @@ class PopularMoviesFragment : BaseComposeFragment() {
             }
           }
         }
+      }
+
+      FloatingActionButton(
+        modifier = Modifier
+          .align(Alignment.BottomEnd)
+          .padding(20.dp),
+        onClick = {
+          scope.launch {
+            lazyListState.animateScrollToItem(0)
+          }
+        },
+        contentColor = MaterialTheme.colors.secondary,
+      ) {
+        Icon(
+          imageVector = Icons.Rounded.KeyboardArrowUp,
+          contentDescription = null,
+          tint = Color.White,
+        )
       }
     }
   }

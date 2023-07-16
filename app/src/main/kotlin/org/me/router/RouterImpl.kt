@@ -18,7 +18,9 @@ class RouterImpl @Inject constructor(
       .supportFragmentManager
       .commit {
         setReorderingAllowed(true)
-        add(id.container_fragment, fragment)
+        val tag = fragment.javaClass.name
+        addToBackStack(tag)
+        add(id.container_fragment, fragment, tag)
       }
   }
 }
