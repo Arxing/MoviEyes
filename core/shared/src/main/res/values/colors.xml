@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="white">#FFFFFFFF</color>
   <color name="yellow">#FED766</color>
-  <color name="yellow_weight">#B78901</color>
-  <color name="black">#0C1713</color>
-  <color name="gray">#7A918D</color>
-  <color name="purple">#4C0827</color>
-  <color name="purple_weight">#250413</color>
+  <color name="yellow_dark">#B78901</color>
+  <color name="white">#FFFFFF</color>
+  <color name="black">#08090A</color>
+  <color name="madder">#A20021</color>
+  <color name="gray">#7D7C84</color>
+  <color name="asparagus">#88AB75</color>
+  <color name="asparagus_dark">#557246</color>
 
-  <!-- Primary brand color. -->
+
   <color name="colorPrimary">@color/yellow</color>
-  <color name="colorPrimaryVariant">@color/yellow_weight</color>
-  <color name="colorOnPrimary">@color/gray</color>
-  <!-- Secondary brand color. -->
-  <color name="colorSecondary">@color/purple</color>
-  <color name="colorSecondaryVariant">@color/purple_weight</color>
+  <color name="colorPrimaryVariant">@color/yellow_dark</color>
+  <color name="colorOnPrimary">@color/black</color>
+
+  <color name="colorSecondary">@color/asparagus</color>
+  <color name="colorSecondaryVariant">@color/asparagus_dark</color>
   <color name="colorOnSecondary">@color/black</color>
+
+  <color name="colorSurface">@color/white</color>
+  <color name="colorOnSurface">@color/black</color>
+
+  <color name="colorError">@color/madder</color>
+  <color name="colorOnError">@color/white</color>
+
+  <color name="colorBackground">@color/white</color>
+  <color name="colorOnBackground">@color/black</color>
 </resources>
