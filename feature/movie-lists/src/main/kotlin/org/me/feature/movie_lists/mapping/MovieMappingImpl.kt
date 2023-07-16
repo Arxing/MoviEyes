@@ -31,6 +31,7 @@ internal class MovieMappingImpl @Inject constructor(
 
   override fun MovieDTO.toMovieCardState(): MovieCardState {
     return MovieCardState(
+      movieId = id,
       coverUrl = imageUrlGenerator.generateImageUrl(posterPath),
       title = title,
       releaseDate = releaseDate,

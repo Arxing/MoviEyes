@@ -81,9 +81,9 @@ fun MovieCard(
 
       IconButton(
         modifier = Modifier
-          .size(30.dp)
           .align(Alignment.BottomEnd)
-          .padding(5.dp),
+          .padding(5.dp)
+          .size(22.dp),
         onClick = {
           onClickFavorite()
         }

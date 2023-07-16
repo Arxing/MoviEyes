@@ -28,13 +28,17 @@ import androidx.paging.compose.items
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.me.core.shared.BaseComposeFragment
+import org.me.core.shared.Router
 import org.me.core.shared.util.ToastUtil
 import org.me.feature.movie_lists.viewmodel.PopularMoviesViewModel
 import org.me.feature.movie_lists.viewmodel.PopularMoviesViewModel.OnError
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class PopularMoviesFragment private constructor() : BaseComposeFragment() {
   private val viewModel: PopularMoviesViewModel by viewModels()
+
+  @Inject lateinit var router: Router
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -59,7 +63,7 @@ class PopularMoviesFragment private constructor() : BaseComposeFragment() {
             MovieCard(
               state = it,
               onClick = {
-
+                router.addFragment(MovieDetailFragment.newInstance(it.movieId))
               },
               onClickFavorite = {
                 it.isFavorite = !it.isFavorite

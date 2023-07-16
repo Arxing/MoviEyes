@@ -5,6 +5,7 @@
   <color name="white">#FFFFFF</color>
   <color name="black">#08090A</color>
   <color name="madder">#A20021</color>
+  <color name="gray_light">#E9EDED</color>
   <color name="gray">#7D7C84</color>
   <color name="asparagus">#88AB75</color>
   <color name="asparagus_dark">#557246</color>
@@ -14,9 +15,9 @@
   <color name="colorPrimaryVariant">@color/yellow_dark</color>
   <color name="colorOnPrimary">@color/black</color>
 
-  <color name="colorSecondary">@color/asparagus</color>
-  <color name="colorSecondaryVariant">@color/asparagus_dark</color>
-  <color name="colorOnSecondary">@color/black</color>
+  <color name="colorSecondary">#A23416</color>
+  <color name="colorSecondaryVariant">#6C230F</color>
+  <color name="colorOnSecondary">@color/white</color>
 
   <color name="colorSurface">@color/white</color>
   <color name="colorOnSurface">@color/black</color>

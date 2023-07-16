@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 
 class MovieCardState(
+  val movieId: Int,
   val coverUrl: String,
   val title: String,
   val releaseDate: String,
