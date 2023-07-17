@@ -5,7 +5,7 @@ import androidx.paging.PagingState
 import org.me.core.data.mapping.MovieDataMapping
 import org.me.feature.movie_lists.data.MovieCardState
 import org.me.feature.movie_lists.mapping.MovieMapping
-import org.me.feature.movie_lists.usecase.GetPopularMovies
+import org.me.core.data.usecase.GetPopularMovies
 import javax.inject.Inject
 
 internal class PopularMoviesPagingSource @Inject constructor(

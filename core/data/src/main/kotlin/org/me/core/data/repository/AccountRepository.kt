@@ -11,5 +11,5 @@ interface AccountRepository {
 
   fun upsertFavorite(movie: FavoriteMovieDTO)
 
-  fun removeFromFavorite(movieId: Int)
+  fun deleteFavorite(movieId: Int)
 }

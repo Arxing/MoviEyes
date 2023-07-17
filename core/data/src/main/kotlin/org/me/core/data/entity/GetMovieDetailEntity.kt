@@ -20,7 +20,7 @@ data class GetMovieDetailEntity(
   @SerializedName("production_companies") val productionCompanies: List<ProductionCompanyEntity>,
   @SerializedName("production_countries") val productionCountries: List<ProductionCountryEntity>,
   @SerializedName("release_date") val releaseDate: String,
-  @SerializedName("revenue") val revenue: Int,
+  @SerializedName("revenue") val revenue: Long,
   @SerializedName("runtime") val runtime: Int,
   @SerializedName("spoken_languages") val spokenLanguages: List<SpokenLanguageEntity>,
   @SerializedName("status") val status: String,

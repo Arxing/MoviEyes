@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -39,6 +40,7 @@ import coil.compose.AsyncImage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.me.core.shared.BaseComposeFragment
+import org.me.core.shared.R
 import org.me.core.shared.util.ToastUtil
 import org.me.feature.movie_lists.viewmodel.MovieDetailViewModel
 import org.me.feature.movie_lists.viewmodel.MovieDetailViewModel.OnError
@@ -82,15 +84,15 @@ class MovieDetailFragment private constructor() : BaseComposeFragment() {
       Cover(
         coverUrl = screen.coverUrl,
         backdropUrl = screen.backdropUrl,
-        isFavorite = screen.isFavorite,
+        isFavorite = viewModel.isFavorite,
         onClickFavorite = {
-
+          viewModel.toggleFavorite()
         },
       )
       Title(title = screen.title)
       AverageRate(voteAverage = screen.voteAverage)
       Description(releaseDate = screen.releaseDate, genres = screen.genres)
-      Overview(overview = screen.overview + screen.overview + screen.overview)
+      Overview(overview = screen.overview)
     }
   }
 
@@ -106,14 +108,16 @@ class MovieDetailFragment private constructor() : BaseComposeFragment() {
         model = backdropUrl,
         contentDescription = null,
         contentScale = ContentScale.Crop,
+        error = painterResource(id = R.drawable.baseline_warning_amber_24),
       )
       Card(
         modifier = Modifier.padding(20.dp),
-        border = BorderStroke(1.dp, colorResource(id = org.me.core.shared.R.color.gray_light))
+        border = BorderStroke(1.dp, colorResource(id = R.color.gray_light))
       ) {
         AsyncImage(
           model = coverUrl,
           contentDescription = null,
+          error = painterResource(id = R.drawable.baseline_warning_amber_24),
         )
       }
       FavoriteButton(
@@ -184,7 +188,7 @@ class MovieDetailFragment private constructor() : BaseComposeFragment() {
     Box {
       CircularProgressIndicator(
         progress = rate,
-        backgroundColor = colorResource(id = org.me.core.shared.R.color.gray_light),
+        backgroundColor = colorResource(id = R.color.gray_light),
       )
       Row(modifier = Modifier.align(Alignment.Center)) {
         val rateInt = rate.times(100).roundToInt()

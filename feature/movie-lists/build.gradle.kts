@@ -15,4 +15,5 @@ dependencies {
   implementation(libs.androidx.paging.compose)
   implementation(project(":core:data"))
   implementation(project(":core:shared"))
+  implementation(project(":core:network"))
 }

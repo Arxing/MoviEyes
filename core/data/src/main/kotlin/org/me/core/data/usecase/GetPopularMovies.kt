@@ -1,4 +1,4 @@
-package org.me.feature.movie_lists.usecase
+package org.me.core.data.usecase
 
 import org.me.core.data.dto.GetPopularMoviesDTO
 import org.me.core.data.repository.MovieListsRepository

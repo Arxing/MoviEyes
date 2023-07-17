@@ -22,7 +22,6 @@ interface MovieDetailMapping {
         overview = overview,
         genres = genres.map { it.name },
         voteAverage = voteAverage.div(10).toFloat(),
-        initIsFavorite = false,
       )
     }
   }

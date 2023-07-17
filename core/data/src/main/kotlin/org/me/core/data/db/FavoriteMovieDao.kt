@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.Flow
 import org.me.core.data.entity.FavoriteMovieEntity
 
 @Dao
-internal interface FavoriteMovieDao {
+interface FavoriteMovieDao {
 
-  @Query("SELECT * FROM favorite_movie")
+  @Query("SELECT * FROM favorite_movie ORDER BY modified")
   fun getAll(): Flow<List<FavoriteMovieEntity>>
 
   @Query("SELECT EXISTS(SELECT * FROM favorite_movie WHERE movieId=:movieId)")

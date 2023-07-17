@@ -6,8 +6,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class FavoriteMovieDTO(
   val movieId: Int,
-  val coverUrl: String,
+  val coverUrl: String?,
   val title: String,
-  val releaseDate: String,
-  val overview: String,
 ) : Parcelable

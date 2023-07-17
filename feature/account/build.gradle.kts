@@ -10,6 +10,9 @@ android {
 }
 
 dependencies {
+  implementation(libs.coil.bom)
+  implementation(libs.coil.compose)
   implementation(project(":core:data"))
   implementation(project(":core:shared"))
+  implementation(project(":feature:movie-lists"))
 }

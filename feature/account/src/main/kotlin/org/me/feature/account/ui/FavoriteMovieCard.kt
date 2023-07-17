@@ -1,4 +1,4 @@
-package org.me.feature.movie_lists.ui
+package org.me.feature.account.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -14,32 +14,34 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.Icons.Outlined
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.rounded.Delete
+import androidx.compose.material.icons.sharp.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.imageLoader
-import org.me.core.shared.R
-import org.me.feature.movie_lists.data.MovieCardState
+import org.me.core.shared.R.drawable
+import org.me.feature.account.data.FavoriteMovieCardState
 
 @Composable
-fun MovieCard(
+fun FavoriteMovieCard(
   modifier: Modifier = Modifier,
-  state: MovieCardState,
-  isFavorite: Boolean,
+  state: FavoriteMovieCardState,
   onClick: () -> Unit,
-  onClickFavorite: () -> Unit,
+  onClickDelete: () -> Unit,
 ) {
   Card(
     modifier = modifier
@@ -56,7 +58,7 @@ fun MovieCard(
           model = state.coverUrl,
           contentDescription = null,
           imageLoader = LocalContext.current.imageLoader,
-          error = painterResource(id = R.drawable.baseline_warning_amber_24),
+          error = painterResource(id = drawable.baseline_warning_amber_24),
         )
         Column(
           modifier = Modifier
@@ -68,17 +70,6 @@ fun MovieCard(
             style = TextStyle(fontWeight = FontWeight.Bold),
             fontSize = 14.sp,
           )
-          Text(
-            text = state.releaseDate,
-            fontSize = 10.sp,
-            color = colorResource(id = R.color.gray)
-          )
-          Text(
-            modifier = Modifier.padding(top = 10.dp),
-            text = state.overview.takeIf { it.isNotEmpty() } ?: "Nothing...",
-            overflow = TextOverflow.Ellipsis,
-            fontSize = 10.sp,
-          )
         }
       }
 
@@ -88,22 +79,14 @@ fun MovieCard(
           .padding(5.dp)
           .size(22.dp),
         onClick = {
-          onClickFavorite()
+          onClickDelete()
         }
       ) {
-        if (isFavorite) {
-          Icon(
-            imageVector = Icons.Outlined.Favorite,
-            contentDescription = null,
-            tint = Color.Red,
-          )
-        } else {
-          Icon(
-            imageVector = Icons.Outlined.FavoriteBorder,
-            contentDescription = null,
-            tint = Color.Gray,
-          )
-        }
+        Icon(
+          imageVector = Icons.Default.Delete,
+          contentDescription = null,
+          tint = Color.Gray,
+        )
       }
     }
   }

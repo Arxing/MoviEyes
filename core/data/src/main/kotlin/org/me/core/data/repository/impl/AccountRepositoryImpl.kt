@@ -4,14 +4,14 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import org.me.core.data.db.FavoriteMovieDao
 import org.me.core.data.dto.FavoriteMovieDTO
-import org.me.core.data.mapping.FavoriteMovieMapping
+import org.me.core.data.mapping.FavoriteMovieDataMapping
 import org.me.core.data.repository.AccountRepository
 import javax.inject.Inject
 
 internal class AccountRepositoryImpl @Inject constructor(
   private val favoriteMovieDao: FavoriteMovieDao,
-  private val favoriteMovieMapping: FavoriteMovieMapping,
-) : AccountRepository, FavoriteMovieMapping by favoriteMovieMapping {
+  private val favoriteMovieDataMapping: FavoriteMovieDataMapping,
+) : AccountRepository, FavoriteMovieDataMapping by favoriteMovieDataMapping {
 
   override fun isFavorite(movieId: Int): Boolean {
     return favoriteMovieDao.exists(movieId)
@@ -33,7 +33,7 @@ internal class AccountRepositoryImpl @Inject constructor(
     }
   }
 
-  override fun removeFromFavorite(movieId: Int) {
+  override fun deleteFavorite(movieId: Int) {
     with(favoriteMovieDao) {
       if (exists(movieId)) {
         delete(movieId)

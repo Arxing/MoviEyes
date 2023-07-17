@@ -10,7 +10,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import org.me.core.data.db.FavoriteMovieDao
 import org.me.core.data.db.MEDatabase
-import org.me.core.data.mapping.FavoriteMovieMapping
+import org.me.core.data.mapping.FavoriteMovieDataMapping
 import org.me.core.data.mapping.MovieDataMapping
 import org.me.core.data.mapping.MovieDetailDataMapping
 import org.me.core.data.mapping.PopularMoviesDataMapping
@@ -42,7 +42,7 @@ internal abstract class DataModule {
   abstract fun bindMovieDetailMapping(impl: MovieDetailDataMapping.Impl): MovieDetailDataMapping
 
   @Binds
-  abstract fun bindFavoriteMovieMapping(impl: FavoriteMovieMapping.Impl): FavoriteMovieMapping
+  abstract fun bindFavoriteMovieMapping(impl: FavoriteMovieDataMapping.Impl): FavoriteMovieDataMapping
 
   companion object {
 

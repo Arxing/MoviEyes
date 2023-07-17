@@ -12,9 +12,12 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.KeyboardArrowUp
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.paging.LoadState.Loading
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
@@ -50,6 +54,7 @@ class PopularMoviesFragment private constructor() : BaseComposeFragment() {
     val movieCards = viewModel.getPopularMoviesFlow().collectAsLazyPagingItems()
     val lazyListState = rememberLazyListState()
     val scope = rememberCoroutineScope()
+    val favoriteIds by viewModel.favoriteIds.collectAsState()
 
     Box(modifier = Modifier.fillMaxSize()) {
       LazyColumn(
@@ -62,11 +67,12 @@ class PopularMoviesFragment private constructor() : BaseComposeFragment() {
           if (it != null) {
             MovieCard(
               state = it,
+              isFavorite = it.movieId in favoriteIds,
               onClick = {
                 router.addFragment(MovieDetailFragment.newInstance(it.movieId))
               },
               onClickFavorite = {
-                it.isFavorite = !it.isFavorite
+                viewModel.toggleFavorite(it)
               },
             )
           }
@@ -79,6 +85,17 @@ class PopularMoviesFragment private constructor() : BaseComposeFragment() {
               contentAlignment = Alignment.Center,
             ) {
               CircularProgressIndicator()
+            }
+          }
+        }
+        if (movieCards.loadState.append is LoadState.Error) {
+          item {
+            Box(
+              modifier = Modifier
+                .fillMaxSize()
+                .align(Alignment.Center),
+            ) {
+              Text(text = "載入失敗")
             }
           }
         }

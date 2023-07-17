@@ -4,21 +4,19 @@ import org.me.core.data.dto.FavoriteMovieDTO
 import org.me.core.data.entity.FavoriteMovieEntity
 import javax.inject.Inject
 
-interface FavoriteMovieMapping {
+interface FavoriteMovieDataMapping {
 
   fun FavoriteMovieEntity.toFavoriteMovieDTO(): FavoriteMovieDTO
 
   fun FavoriteMovieDTO.toFavoriteMovieEntity(): FavoriteMovieEntity
 
-  class Impl @Inject constructor() : FavoriteMovieMapping {
+  class Impl @Inject constructor() : FavoriteMovieDataMapping {
 
     override fun FavoriteMovieEntity.toFavoriteMovieDTO(): FavoriteMovieDTO {
       return FavoriteMovieDTO(
         movieId = movieId,
         coverUrl = coverUrl,
         title = title,
-        releaseDate = releaseDate,
-        overview = overview,
       )
     }
 
@@ -27,8 +25,7 @@ interface FavoriteMovieMapping {
         movieId = movieId,
         coverUrl = coverUrl,
         title = title,
-        releaseDate = releaseDate,
-        overview = overview,
+        modified = System.currentTimeMillis(),
       )
     }
   }

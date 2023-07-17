@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import dagger.hilt.android.AndroidEntryPoint
 import org.me.core.shared.Router
 import org.me.databinding.ActivityMainBinding
+import org.me.feature.account.ui.FavoriteMoviesFragment
 import org.me.feature.movie_lists.ui.PopularMoviesFragment
 import javax.inject.Inject
 
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
     override fun createFragment(position: Int): Fragment {
       return when (positionToItemId(position)) {
         R.id.page_popular_movies -> PopularMoviesFragment.newInstance()
-        R.id.page_favorite -> PopularMoviesFragment.newInstance()
+        R.id.page_favorite -> FavoriteMoviesFragment.newInstance()
         else -> TODO()
       }
     }
