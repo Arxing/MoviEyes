@@ -10,7 +10,6 @@ android {
 }
 
 dependencies {
-  implementation(libs.retrofit.core)
-  implementation(project(":core:network"))
-  implementation(project(":core:entity"))
+  implementation(project(":core:data"))
+  implementation(project(":core:shared"))
 }

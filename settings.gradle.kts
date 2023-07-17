@@ -20,7 +20,7 @@ include(
   ":app",
   ":core:shared",
   ":core:network",
-  ":core:entity",
+  ":core:data",
   ":feature:movie-lists",
   ":feature:account",
 )

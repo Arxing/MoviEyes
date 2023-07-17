@@ -16,7 +16,7 @@ import org.me.feature.movie_lists.usecase.GetMovieDetail
 import javax.inject.Inject
 
 @HiltViewModel
-class MovieDetailViewModel @Inject constructor(
+internal class MovieDetailViewModel @Inject constructor(
   private val getMovieDetail: GetMovieDetail,
   private val movieDetailMapping: MovieDetailMapping,
 ) : ViewModel(), MovieDetailMapping by movieDetailMapping {

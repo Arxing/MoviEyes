@@ -11,14 +11,13 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import org.me.feature.movie_lists.PopularMoviesPagingSource
 import org.me.feature.movie_lists.data.MovieCardState
 import org.me.feature.movie_lists.mapping.MovieMapping
-import org.me.feature.movie_lists.model.PopularMoviesPagingSource
-import org.me.feature.movie_lists.usecase.GetPopularMovies
 import javax.inject.Inject
 
 @HiltViewModel
-class PopularMoviesViewModel @Inject constructor(
+internal class PopularMoviesViewModel @Inject constructor(
   private val movieMapping: MovieMapping,
   private val popularMoviesPagingSource: PopularMoviesPagingSource,
 ) : ViewModel(), MovieMapping by movieMapping {

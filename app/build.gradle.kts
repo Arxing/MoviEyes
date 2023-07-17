@@ -24,9 +24,11 @@ dependencies {
   implementation(libs.androidx.constraintlayout)
   implementation(libs.coil.bom)
   implementation(libs.coil.compose)
+  implementation(libs.room.runtime)
 
   implementation(project(":feature:account"))
   implementation(project(":feature:movie-lists"))
   implementation(project(":core:shared"))
   implementation(project(":core:network"))
+  implementation(project(":core:data"))
 }

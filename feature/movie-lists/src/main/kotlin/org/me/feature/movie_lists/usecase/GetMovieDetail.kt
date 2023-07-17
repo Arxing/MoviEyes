@@ -1,7 +1,7 @@
 package org.me.feature.movie_lists.usecase
 
-import org.me.feature.movie_lists.data.GetMovieDetailDTO
-import org.me.feature.movie_lists.model.MovieListsRepository
+import org.me.core.data.dto.GetMovieDetailDTO
+import org.me.core.data.repository.MovieListsRepository
 import javax.inject.Inject
 
 class GetMovieDetail @Inject internal constructor(
